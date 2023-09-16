@@ -26,15 +26,42 @@ int main(int argc, char** argv, char** env) {
 
     set_defaults(dut);
 
-    while (sim_time < MAX_SIM_TIME) {
-        dut->clk ^= 1;
-        dut->eval();
-        m_trace->dump(sim_time);
+    dut->rst_n = 0;
+    SETCLK(1);
+    dut->rst_n = 1;
+    SETCLK(0);
+
+    for(uint32_t i = 0; i < 0x000fffff; i++){
+        dut->d_i = i*4096;
+        dut->load_i = 1;
+
+        SETCLK(1);
+        dut->load_i = 0;
+
         SIGDUMP(q_o);
-        sim_time++;
+        assert(dut->q_o == i*4096);
+
+        SETCLK(0);
     }
+
+    dut->d_i = 123456;
+    dut->load_i = 1;
+    SETCLK(1);
+    dut->load_i = 0;
+    dut->rst_n = 0;
+    SETCLK(0);
+
+    SETCLK(1);
+
+    dut->rst_n = 1;
+
+    SETCLK(0);
+
+    assert(dut->q_o == 0);
 
     m_trace->close();
     delete dut;
+
+    std::cout << "DUT Passed Verification!" << std::endl;
     exit(EXIT_SUCCESS);
 }
