@@ -4,4 +4,4 @@ build:
 	docker build -t verilator .
 
 run:
-	docker run -it -v /Users/collin/code/verilator_workflow:/root verilator:latest
+	docker run -it --rm -v $(PWD)/../:/root verilator:latest
