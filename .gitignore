@@ -1,2 +1,5 @@
 obj_dir/
 .gitconfig
+.bash_history
+
+__pycache__/
