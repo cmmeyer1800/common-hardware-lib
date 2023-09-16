@@ -26,19 +26,19 @@ By default this will mount the repo's root director into /root in the container 
 ## Using Verilator
 Once running in the docker container you simply change directory into whichever module you want to test and from there the makefile will perform most desired actions.
 
-### Simulate
+#### Simulate
 In order to perform a simulation of the module and generate waveforms:
 ```shell
 make
 ```
 
-### Build
+#### Build
 In order to just build but not run the simulation:
 ```shell
 make build
 ```
 
-### Lint
+#### Lint
 To only lint your .sv module:
 ```shell
 make lint
