@@ -13,9 +13,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    logging.info("Creating New Project '%s' From Template Directory '%s'", args.module_name, )
+    logging.info("Creating New Project '%s' From Template Directory '%s'", args.module_name, args.temp_dir)
 
-    proj_path = os.path.join(os.getcwd(), args.module_name)
+    proj_path = os.path.join(os.getcwd(), f"modules/{args.module_name}")
     hvl_path = os.path.join(proj_path, "hvl")
     rtl_path = os.path.join(proj_path, "rtl")
     template_path = os.path.join(os.getcwd(), args.temp_dir)
