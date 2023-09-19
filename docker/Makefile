@@ -7,4 +7,4 @@ build: ./Dockerfile
 
 .PHONY: test
 test:
-	docker run -it --rm -v $(PWD)/../:/root --entrypoint /root/scripts/test verilator:latest
+	docker run -t --rm -v $(PWD)/../:/root --entrypoint /root/scripts/test verilator:latest
