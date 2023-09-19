@@ -29,6 +29,6 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hello ${{ inputs.name }}"
+      run: echo "Hello $(whoami)"
     - name: Test Docker Access
       run: docker ps
