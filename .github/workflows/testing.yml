@@ -29,4 +29,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Run Simulation Tests
         run: |
-          ./scripts/test
+          cd docker
+          make test
