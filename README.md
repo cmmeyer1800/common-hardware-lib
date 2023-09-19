@@ -1,5 +1,7 @@
 # Common Hardware Library
 
+[![Testing Workflow](https://github.com/cmmeyer1800/common-hardware-lib/actions/workflows/testing.yml/badge.svg)](https://github.com/cmmeyer1800/common-hardware-lib/actions/workflows/testing.yml)
+
 This library was created as a way for me to create and store many hardware modules that I find myself re-implementing across different projects. The idea is to make the process of getting started with creation and simulation of system verilog modules as quick as possible. To this end, I have created a project template and python script to quickly spin up new projects targeting [Verilator](https://www.veripool.org/verilator/) as the simulator. Verilator was chosen because it is FOSS.
 
 ## New Module Creation
