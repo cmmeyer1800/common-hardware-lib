@@ -1,0 +1,21 @@
+name: Testing Workflow
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  push:
+    branches:
+      - 'main'
+      - 'test'
+
+jobs:
+  Docker:
+    # The type of runner that the job will run on
+    runs-on: [self-hosted, linux]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Test Image
+        run: |
+          cd docker
+          make build/test

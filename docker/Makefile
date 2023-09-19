@@ -4,3 +4,6 @@ run:
 
 build: ./Dockerfile
 	sudo docker build -t verilator .
+
+build/test: ./Dockerfile
+	sudo docker build -t verilator-testing test.Dockerfile
