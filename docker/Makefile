@@ -4,6 +4,3 @@ run:
 
 build: ./Dockerfile
 	docker build -t verilator .
-
-build/test: ./Dockerfile
-	docker build -t verilator-testing test.Dockerfile
