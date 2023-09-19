@@ -19,4 +19,4 @@ jobs:
         run: |
           cd docker
           ls -la
-          make build/test
+          make build
