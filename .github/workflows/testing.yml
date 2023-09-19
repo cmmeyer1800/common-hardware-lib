@@ -20,3 +20,11 @@ jobs:
           cd docker
           ls -la
           make build
+
+  Test-Modules:
+    runs-on: [self-hosted, linux]
+
+    steps:
+      - name: Run Simulation Tests
+        run: |
+          ./scripts/test

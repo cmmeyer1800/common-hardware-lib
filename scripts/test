@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+cd modules
+
+for dir in */; do
+    cd "$dir"
+    
+    make clean
+    make
+
+    cd ..
+done

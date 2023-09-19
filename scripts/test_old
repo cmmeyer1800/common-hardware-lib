@@ -1,0 +1,14 @@
+#! /usr/bin/python3
+
+import os
+
+MOD_DIR = os.environ.get("MOD_DIR", "/root/modules")
+
+if __name__ == "__main__":
+    modules = os.listdir(MOD_DIR)
+
+    for mod in modules:
+        mod_path = os.path.join(MOD_DIR, mod)
+        os.chdir(mod_path)
+        proc = os.popen("make waveform.vcd")
+        print(proc.read())
