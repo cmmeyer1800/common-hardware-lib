@@ -23,8 +23,10 @@ jobs:
 
   Test-Modules:
     runs-on: [self-hosted, linux]
+    needs: Docker
 
     steps:
+      - uses: actions/checkout@v4
       - name: Run Simulation Tests
         run: |
           ./scripts/test
