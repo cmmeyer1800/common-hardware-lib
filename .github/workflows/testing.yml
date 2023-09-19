@@ -18,4 +18,5 @@ jobs:
       - name: Build Test Image
         run: |
           cd docker
+          ls -la
           make build/test
