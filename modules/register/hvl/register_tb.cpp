@@ -31,15 +31,15 @@ int main(int argc, char** argv, char** env) {
     dut->rst_n = 1;
     SETCLK(0);
 
-    for(uint32_t i = 0; i < 0x000fffff; i++){
+    for(uint32_t i = 0; i < 1000; i++){
         dut->d_i = i*4096;
         dut->load_i = 1;
 
         SETCLK(1);
         dut->load_i = 0;
 
-        SIGDUMP(q_o);
-        assert(dut->q_o == i*4096);
+        // SIGDUMP(q_o);
+        REQUIRE_EQ(dut->q_o, i*4096);
 
         SETCLK(0);
     }

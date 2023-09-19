@@ -28,7 +28,7 @@ waveform.vcd: ./obj_dir/V$(MODULE)
 	@echo "### BUILDING SIM ###"
 	make -C obj_dir -f V$(MODULE).mk V$(MODULE)
 
-.stamp.verilate: ./rtl/$(MODULE).sv ./hvl/$(MODULE)_tb.cpp
+.stamp.verilate: ./rtl/$(MODULE).sv ./hvl/$(MODULE)_tb.cpp ./hvl/utils.h
 	@echo
 	@echo "### VERILATING ###"
 	verilator -Wall --trace -cc ./rtl/$(MODULE).sv --exe ./hvl/$(MODULE)_tb.cpp

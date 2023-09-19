@@ -1,7 +1,6 @@
-.PHONY: build run
-
-build:
-	docker build -t verilator .
-
+.PHONY: run
 run:
-	docker run -it --rm -v $(PWD)/../:/root verilator:latest
+	sudo docker run -it --rm -v $(PWD)/../:/root verilator:latest
+
+build: ./Dockerfile
+	sudo docker build -t verilator .
