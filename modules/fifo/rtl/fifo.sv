@@ -11,10 +11,11 @@ module fifo #(
     input logic [WIDTH-1:0] data_in,
     output logic [WIDTH-1:0] data_out,
     output logic full,
-    output logic empty
+    output logic empty,
+    output logic  [WIDTH-1:0] mem [DEPTH-1:0]
 );
 
-logic [WIDTH-1:0] mem [DEPTH-1:0];
+// logic [WIDTH-1:0] mem [DEPTH-1:0];
 
 // 1 bit larger addr than necessary for circular functionality
 logic [ADDR_WIDTH:0] wr_ptr;
