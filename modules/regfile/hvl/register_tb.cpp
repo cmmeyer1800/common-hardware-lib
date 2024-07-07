@@ -2,14 +2,14 @@
 #include <iostream>
 #include <verilated.h>
 #include <verilated_vcd_c.h>
-#include "Vregister.h"
+#include "Vregfile.h"
 
 #include "utils.h"
 
 #define MAX_SIM_TIME 20
 vluint64_t sim_time = 0;
 
-void set_defaults(Vregister *dut){
+void set_defaults(Vregfile *dut){
     dut->clk = 0;
     dut->rst_n = 1;
     dut->load_i = 0;
@@ -17,7 +17,7 @@ void set_defaults(Vregister *dut){
 }
 
 int main(int argc, char** argv, char** env) {
-    Vregister *dut = new Vregister;
+    Vregfile *dut = new Vregfile;
 
     Verilated::traceEverOn(true);
     VerilatedVcdC *m_trace = new VerilatedVcdC;
@@ -61,7 +61,5 @@ int main(int argc, char** argv, char** env) {
 
     m_trace->close();
     delete dut;
-
-    std::cout << "DUT Passed Verification!" << std::endl;
     exit(EXIT_SUCCESS);
 }

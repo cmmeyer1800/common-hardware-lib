@@ -1,14 +1,16 @@
-module register #(
-    parameter WIDTH = 32
+module regfile #(
+    /* verilator lint_off UNUSEDPARAM */
+    parameter NUM_REGS = 16,
+    parameter REG_WIDTH = 32
 ) (
     input logic clk,
     input logic rst_n,
     input logic load_i,
-    input logic [WIDTH-1:0] d_i,
-    output logic [WIDTH-1:0] q_o
+    input logic [REG_WIDTH-1:0] d_i,
+    output logic [REG_WIDTH-1:0] q_o
 );
 
-logic [WIDTH-1:0] data;
+logic [REG_WIDTH-1:0] data;
 
 assign q_o = data;
 

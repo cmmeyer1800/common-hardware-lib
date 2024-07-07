@@ -1,19 +1,21 @@
 #! /usr/bin/env bash
 
-cd modules
+RED='\033[0;31m'
+BLUE='\033[0;34m'
+GREEN='\033[0;32m'
+NC='\033[0m'
 
-for dir in */; do
-    cd "$dir"
-    
-    make clean
-    make
+fusesoc library add common-hardware ./modules
 
-    retVal=$?
-    if [ $retVal -ne 0 ]; then
-        exit $retVal
-    fi
-
-    make clean
-
-    cd ..
-done
+cores=$(wc -l < modules/list)
+i=1
+while read p; do
+  echo -e "-=-=-=-=-$BLUE [BEGINNING TEST $i/$cores] [CORE=$p]$NC -=-=-=-=-"
+  fusesoc run $p
+  if [ $? -ne 0 ]; then
+    echo -e "-=-=-=-=-$RED [FAILED]$NC [CORE=$p] -=-=-=-=-"
+  else
+    echo -e "-=-=-=-=-$GREEN [PASSED]$NC [CORE=$p] -=-=-=-=-"
+  fi
+  i=$((i+1))
+done < modules/list

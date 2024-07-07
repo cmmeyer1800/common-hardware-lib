@@ -8,3 +8,7 @@ waveform.vcd
 .stamp.verilate
 .cache/
 .vscode/
+fusesoc_libraries/
+fusesoc.conf
+
+build/

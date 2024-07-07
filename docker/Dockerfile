@@ -17,6 +17,9 @@ RUN apt-get install -y perl-doc
 RUN apt-get install -y git autoconf flex bison
 # RUN apt-get install -y gtkwave
 RUN apt-get install -y verilator
+RUN apt-get install -y python3-pip
+
+RUN python3 -m pip install --break-system-packages fusesoc
 
 WORKDIR /root
 

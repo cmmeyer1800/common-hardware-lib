@@ -1,0 +1,48 @@
+CAPI=2:
+
+name : ::regfile:0.0.1
+
+filesets:
+  rtl:
+    files:
+      - rtl/regfile.sv
+    file_type : systemVerilogSource
+  cpp-hvl:
+    files:
+      - hvl/register_tb.cpp
+    file_type : cppSource
+  inc-hvl:
+    files:
+      - hvl/utils.h
+    file_type : cppHeader
+
+targets:
+  default:
+    default_tool : verilator
+    filesets : [rtl, cpp-hvl, inc-hvl]
+    tools:
+      verilator:
+        verilator_options:
+          - "-Wall --trace"
+    toplevel : regfile
+
+  lint:
+    default_tool : verilator
+    description: Run static code checks (linting)
+    filesets : [rtl]
+    tools:
+      verilator:
+        mode : lint-only
+        verilator_options:
+          - "-Wall"
+    toplevel : regfile
+
+parameters:
+  NUM_REGS:
+    datatype   : int
+    description: Number of registers in the register file
+    paramtype  : vlogparam
+  REG_WIDTH:
+    datatype   : int
+    description: Data width of each register
+    paramtype  : vlogparam
