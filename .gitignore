@@ -6,3 +6,5 @@ __pycache__/
 
 waveform.vcd
 .stamp.verilate
+.cache/
+.vscode/
